@@ -1,0 +1,39 @@
+// Colors
+$base-green: #0f3916;
+$white: #fff;
+$bright-green: #39ae5a;
+$gray: #55595c;
+
+// Adaptive width
+$desktop-width: 1200px;
+$tablet-width: 660px;
+$mobile-width: 320px;
+
+// Fonts
+@font-face {
+    font-family: "Biotif";
+    src: url('../assets/fonts/biotif/Biotif-Light.ttf') format('TrueType');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Biotif";
+    src: url('../assets/fonts/biotif/Biotif-Regular.ttf') format('TrueType');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Biotif";
+    src: url('../assets/fonts/biotif/Biotif-ExtraBold.ttf') format('TrueType');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Biotif";
+    src: url('../assets/fonts/biotif/Biotif-LightItalic.ttf') format('TrueType');
+    font-weight: normal;
+    font-style: italic;
+}

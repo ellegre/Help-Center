@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  font-family: "Biotif", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+h1 {
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.container {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+
+@media (min-width: 660px) {
+  .container {
+    width: 660px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px;
+    padding: 0 10px;
+  }
+}
