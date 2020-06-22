@@ -12,13 +12,28 @@
 	    	<li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg></a></li>
 	    	<li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M15.233 5.488c-.843-.038-1.097-.046-3.233-.046s-2.389.008-3.232.046c-2.17.099-3.181 1.127-3.279 3.279-.039.844-.048 1.097-.048 3.233s.009 2.389.047 3.233c.099 2.148 1.106 3.18 3.279 3.279.843.038 1.097.047 3.233.047 2.137 0 2.39-.008 3.233-.046 2.17-.099 3.18-1.129 3.279-3.279.038-.844.046-1.097.046-3.233s-.008-2.389-.046-3.232c-.099-2.153-1.111-3.182-3.279-3.281zm-3.233 10.62c-2.269 0-4.108-1.839-4.108-4.108 0-2.269 1.84-4.108 4.108-4.108s4.108 1.839 4.108 4.108c0 2.269-1.839 4.108-4.108 4.108zm4.271-7.418c-.53 0-.96-.43-.96-.96s.43-.96.96-.96.96.43.96.96-.43.96-.96.96zm-1.604 3.31c0 1.473-1.194 2.667-2.667 2.667s-2.667-1.194-2.667-2.667c0-1.473 1.194-2.667 2.667-2.667s2.667 1.194 2.667 2.667zm4.333-12h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm.952 15.298c-.132 2.909-1.751 4.521-4.653 4.654-.854.039-1.126.048-3.299.048s-2.444-.009-3.298-.048c-2.908-.133-4.52-1.748-4.654-4.654-.039-.853-.048-1.125-.048-3.298 0-2.172.009-2.445.048-3.298.134-2.908 1.748-4.521 4.654-4.653.854-.04 1.125-.049 3.298-.049s2.445.009 3.299.048c2.908.133 4.523 1.751 4.653 4.653.039.854.048 1.127.048 3.299 0 2.173-.009 2.445-.048 3.298z"/></svg></a></li>
 	    </ul>
+	    <button @click="goUp" id="topBtn" title="Go to top">&uarr;</button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "Footer",
+	methods: {
+	  	goUp() {
+            document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; 
+	  		let mybutton = document.getElementById("topBtn");
+			window.onscroll = function() {scrollFunction()};
+			function scrollFunction() {
+			  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+			    mybutton.style.display = "block";
+			  } else {
+			    mybutton.style.display = "none";
+			  }
+			}
+	  	}
+	}
 
 };
 </script>
@@ -57,7 +72,29 @@ export default {
 	svg {
 		fill: currentColor;
 	}
-
+	button {
+		display: none; 
+		position: fixed; 
+		width: 50px;
+		height: 50px;
+		bottom: 20px; 
+		right: 30px; 
+		z-index: 99; 
+		border: none; 
+		outline: none; 
+		background-color: $gray;
+		color: white; 
+		cursor: pointer; 
+		padding: 15px; 
+		border-radius: 10px; 
+		font-size: 18px; 
+		   &:hover,
+		   &:focus {
+		  	  color: $text-green;
+		  }
+	}
 }
+
+
 
 </style>
