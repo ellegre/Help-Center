@@ -17,9 +17,6 @@
   	</section>
   	<Navigation/>
   	<Content/>
- 
-
-
   </div>
 </template>
 
@@ -74,7 +71,8 @@ export default {
       font-size: 20px;
       color: $gray;
       border: none;
-      width: 100%;     
+      width: 100%;  
+      box-shadow: inset 0 0 4px 1px black;   
       &::placeholder {
       	font-style: italic;
       	color: lighten($gray, 20%);
@@ -92,11 +90,13 @@ export default {
 		font-family: biotifbook, Biotif, sans-serif;
 		font-size: 18px;
 		white-space: nowrap;
-		background-color: $bright-green;
+		background-color: $mint-green;
+		text-shadow: 1px 0 1px #000; 
 		color: $white;
         font-weight: bold;
 		letter-spacing: 3px;
 		padding: 15px 30px;
+		box-shadow: inset 0 0 4px 1px $base-green;
 		outline: none;
 		border: none;
 		&:hover {
