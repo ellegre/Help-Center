@@ -65,14 +65,14 @@ export default {
 	&__form {
 		display: flex;
 		width: 550px;
+		border: 1px solid $gray;
 	}
 	&__input {
 	  padding: 10px 30px;
       font-size: 20px;
       color: $gray;
       border: none;
-      width: 100%;  
-      box-shadow: inset 0 0 4px 1px black;   
+      width: 100%;    
       &::placeholder {
       	font-style: italic;
       	color: lighten($gray, 20%);
@@ -96,11 +96,11 @@ export default {
         font-weight: bold;
 		letter-spacing: 3px;
 		padding: 15px 30px;
-		box-shadow: inset 0 0 4px 1px $base-green;
 		outline: none;
 		border: none;
+		border-left: 0.5px solid $gray;
 		&:hover {
-			background-color: darken($bright-green, 10%);
+			background-color: lighten($mint-green, 10%);
 		}
     }
 }

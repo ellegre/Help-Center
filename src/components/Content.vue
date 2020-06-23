@@ -1,6 +1,10 @@
 <template>
 	<div>
 	  	<section class="content container">
+	  		<aside>
+	  			<h2>Promoted articles</h2>
+	  			<div>{{ info }}</div>
+	  		</aside>
 	  		<ul class="content__list">
 	  			<li>
 	  				<a class="content__link content__link--start">
@@ -36,9 +40,21 @@
 <script>
 
 export default {
-  name: "Footer",
-  props: {
-    msg: String
+  data() {
+  	return {
+  		info: null
+  	};
+  },
+  methods: {
+  	getData() {
+  		this.$http.get('https://jsonplaceholder.typicode.com/posts/')
+  		.then(response => (this.info = response));
+  		console.log(this.info)
+
+  		}
+  	},
+  	mounted() {
+    this.getData()
   }
 };
 </script>
@@ -68,7 +84,7 @@ export default {
 	&__title {
         position: relative;
         color: $bright-green;
-        &::after {
+        /*&::after {
 			content: ""; 
             background: url('../assets/img/arrow.png') no-repeat center center;
             background-size: 40px;
@@ -79,7 +95,7 @@ export default {
 		    position: absolute;
 		    right: -34px;
 		    top: -38px;
-		}
+		}*/
 	
 	}
 }

@@ -11,7 +11,7 @@
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";
 import Footer from "./components/Footer";
-
+import Content from "./components/Content";
 
 
 export default {
@@ -20,6 +20,7 @@ export default {
     Header,
     Main,
     Footer,
+    Content
   }
 };
 </script>
