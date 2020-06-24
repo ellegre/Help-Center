@@ -1,10 +1,29 @@
 <template>
 	<div>
-	  	<section class="content container">
-	  		<aside>
-	  			<h2>Promoted articles</h2>
-	  			<div>{{ info }}</div>
-	  		</aside>
+	  	<div class="content container">
+	  		<section class="articles">
+	  			<div class="list-wrapper">
+					<ul class="list">
+						<li class="list__item" v-for="item in reversedData" :key="item.id">
+						  <article class="list__article">
+						    <a>
+						      <picture>
+						        <source media="(min-width: 960px)" srcset="">
+						      </picture>
+						    </a>
+						    <div class="list__content-wrapper">
+						      <p>{{item.title}}</p>
+						      <p>{{}}</p>
+						      <p>{{}}</p>
+						      <div class="user-list__like-wrapper">
+						        <button class="list__button">read</button>
+						      </div>
+						    </div>
+						  </article>
+						</li>						
+				    </ul>
+				</div>
+	  		</section>
 	  		<ul class="content__list">
 	  			<li>
 	  				<a class="content__link content__link--start">
@@ -27,8 +46,7 @@
 	  				</a>
 	  			</li>
 	  		</ul>
-	  		
-	  	</section>
+	  	</div>
 	  	<section class="submit">
 	  		<h2>Can't find what you're looking for?</h2>
 	  		<p>Let us help you!</p>
@@ -42,18 +60,23 @@
 export default {
   data() {
   	return {
-  		info: null
+  		data: [],
+  		loading: true,
+        errored: false
   	};
+  },
+  computed: {
+    reversedData: function() {
+    	return this.data.slice(0, 10).reverse();
+    }
   },
   methods: {
   	getData() {
   		this.$http.get('https://jsonplaceholder.typicode.com/posts/')
-  		.then(response => (this.info = response));
-  		console.log(this.info)
-
-  		}
-  	},
-  	mounted() {
+  		.then(response => (this.data = response.data));
+  	}
+  },
+  mounted() {
     this.getData()
   }
 };
