@@ -61,18 +61,20 @@ export default {
 	a {
 		display: inline-block;
 		color: $white;
-		&:hover,
-		&:focus {
-			color: $text-green;
-		}
+			&:hover,
+			&:focus {
+				color: $text-green;
+			}
 	}
 
 	span {
 		color: $text-green;
 	}
+
 	svg {
 		fill: currentColor;
 	}
+
 	button {
 		display: none; 
 		position: fixed; 
@@ -97,7 +99,4 @@ export default {
 		  }
 	}
 }
-
-
-
 </style>

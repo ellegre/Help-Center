@@ -4,17 +4,17 @@
 	  		<ul class="info__list container">
 	  			<li>
 	  				<a href="#" class="info__link">
-	  				  <h3 class="info__title">Getting started</h3>
+	  				   <h3 class="info__title">Getting started</h3>
 	  				</a>
 	  			</li>
 	  			<li>
 	  				<a href="#" class="info__link">
-	  				  <h3 class="info__title">Purchasing Questions</h3>
+	  				   <h3 class="info__title">Purchasing Questions</h3>
 	  				</a>
 	  			</li>
 	  			<li>
 	  				<a href="#" class="info__link">
-	  				  <h3 class="info__title">Usage Guides</h3>
+	  				   <h3 class="info__title">Usage Guides</h3>
 	  				</a>
 	  			</li>
 	  			<li>
@@ -28,12 +28,19 @@
   			<h2>Promoted articles</h2>
 			<ul class="articles__list">
 				<li class="articles__list-item" v-for="item in reversedData" :key="item.id">
-				  <article class="articles__article">
-				    <img src="../assets/img/sunset.jpg" width="200" height="auto">
-				     <a href="#" class="articles__title">{{toUpperCaseFirstLetter(item.title)}}<span>{{getRandomInt(0, 300)}}</span></a>
+				    <article class="articles__article">
+				        <img src="../assets/img/sunset.jpg" width="200" height="auto">
+				        <a href="#" class="articles__title">{{toUpperCaseFirstLetter(item.title)}}<span>{{getRandomInt(0, 300)}}</span></a>
 				  </article>
 				</li>					
 		    </ul>
+  		</section>
+  		<section class="community container">
+  			<div>
+  				<h2>Community</h2>
+  			    <a href="#">browse</a>
+  			</div>
+  			<p>No recent activities yet.</p>
   		</section>
 	  	<section class="submit">
 	  		<h2>Can't find what you're looking for?</h2>
@@ -44,7 +51,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
   	return {
@@ -52,13 +58,12 @@ export default {
   		loading: true,
         errored: false,
         comments: null
-  	};
+  	}
   },
   computed: {
     reversedData: function() {
     	return this.data.slice(0, 10).reverse();
-    }
-    
+    }    
   },
   methods: {
   	getData() {
@@ -74,7 +79,6 @@ export default {
         if (!str) return str;
         return str[0].toUpperCase() + str.slice(1);
     },
-
     getRandomInt: function(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -88,8 +92,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-
 .info {
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -107,53 +109,33 @@ export default {
 			align-items: center;
 			width: 154px;
 			height: 154px;
-      background-color: $bright-green;
-      border-radius: 50%;
-      box-shadow: 0px 1px 1px rgba(8, 32, 60, 0.15), 0px 1px 4px rgba(7, 52, 119, 0.14);
-      &:hover,
-		&:focus {
-			box-shadow: 0px 16px 32px rgba(55, 71, 79, 0.08), 0px 8px 24px rgba(55, 71, 79, 0.1);
-		}
-	}
-
+		    background-color: $bright-green;
+		    border-radius: 50%;
+                &:hover,
+		        &:focus {
+			        box-shadow: 0px 16px 32px rgba(55, 71, 79, 0.08), 0px 8px 24px rgba(55, 71, 79, 0.1);
+		        }
+	    }
 	}
 	&__link {
 		display: block;
-		padding: 20px 40px;
-
-		
+		padding: 20px 40px;		
 	}
 	&__title {
         position: relative;
         color: $white;
         font-size: 18px;
-
-        /*&::after {
-			content: ""; 
-            background: url('../assets/img/arrow.png') no-repeat center center;
-            background-size: 40px;
-		    display: block;
-		    width: 30px;
-		    height: 30px;
-		    border-radius: 50%;
-		    position: absolute;
-		    right: -34px;
-		    top: -38px;
-		}*/
-
 	}
 }
 
 .articles {
 	&__article {
 		padding-bottom: 50px;
-
 	}
 	&__list {
 		display: grid;
-		grid-gap: 40px 40px;
-        grid-template-columns: 33.33% 33.33% 33.33%;
-
+		grid-gap: 40px 3%;
+        grid-template-columns: 31% 31% 31%;
 	}
 	&__list-item {
 		padding-top: 15px;
@@ -161,12 +143,12 @@ export default {
 		border-top: 1px solid lighten($gray, 30%);
 		font-size: 16px;
 		text-align: left;
-		&:first-child {
-            grid-row-start: 1;
-            grid-row-end: 4;
-			border-top: none;
-			padding-top: 0;
-		}
+			&:first-child {
+	            grid-row-start: 1;
+	            grid-row-end: 4;
+				border-top: none;
+				padding-top: 0;
+			}
 
 		span {
 		  margin-left: 10px;
@@ -187,19 +169,38 @@ export default {
     
     h2 {
     	font-weight: lighter;
-    	font-size: 18px;
+    	font-size: 24px;
     }
 
     a {
     	margin-top: 15px;
     	color: $gray;
-    	&:hover,
-    	&:focus {
-    	  color: darken($gray, 20%);
-    	  }
+	    	&:hover,
+	    	&:focus {
+	    	  color: darken($gray, 20%);
+	    	}
     }
 }
 
+.community {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-bottom: 50px;
+	border: 2px solid lighten($gray, 55%);
+	border-radius: 8px;
+
+	h2 {
+		margin: 0;
+		margin-bottom: 20px;
+		margin-right: 15px;
+		font-family: "biotif-book", Biotif, sans-serif;
+    	font-size: 24px;
+    	display: inline-block;
+	}
+	a {
+      font-size: 24px;
+	}
+}
 
 .submit {
 	display: flex;
@@ -207,8 +208,7 @@ export default {
 	align-items: center;
 	padding-bottom: 25px;
 	color: $gray;	
-	//background: url('../assets/img/geometric.jpg') top right 10px no-repeat;
-    background-color: $mint-green;
+    background-color: lighten($gray, 60%);
 
 	p {
       margin-bottom: 25px;
@@ -227,13 +227,11 @@ export default {
       font-weight: bold;
       box-sizing: border-box;
       cursor: pointer;
-      &:hover,
-      &:focus {
-        color: $base-green;
-        box-shadow: inset 0px 16px 32px rgba(55, 71, 79, 0.08);
-      }
+	      &:hover,
+	      &:focus {
+	        color: $base-green;
+	        box-shadow: inset 0px 16px 32px rgba(55, 71, 79, 0.08);
+	      }
 	}
-
 }
-
 </style>

@@ -28,6 +28,13 @@ $mobile-width: 320px;
 }
 
 @font-face {
+    font-family: "biotif-book";
+    src: url('../assets/fonts/biotif/Biotif-Book.ttf') format('TrueType');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Biotif";
     src: url('../assets/fonts/biotif/Biotif-ExtraBold.ttf') format('TrueType');
     font-weight: bold;

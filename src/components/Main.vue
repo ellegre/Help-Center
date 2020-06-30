@@ -20,15 +20,10 @@ import Content from "./Content";
 
 export default {
   name: "Footer",
-  props: {
-    msg: String
-  },
   components: {
   	Navigation,
   	Content
-
   }
-
 };
 </script>
 
@@ -43,8 +38,7 @@ export default {
 	background-image: url('../assets/img/plant.jpg');
 	background-size: cover;
 	background-position: 0px 50%;
-    background-repeat: no-repeat; /* Do not repeat the image */
-    
+    background-repeat: no-repeat; /* Do not repeat the image */    
 	filter: brightness(0.8);
 	&__photo-container {
 		width: 100%;
@@ -66,15 +60,15 @@ export default {
 		width: 50%;
 	}
 	&__input {
-	  padding: 10px 30px;
-      font-size: 20px;
-      color: $gray;
-      border: none;
-      width: 100%;    
-      &::placeholder {
-      	font-style: italic;
-      	color: lighten($gray, 20%);
-      }
+		padding: 10px 30px;
+	    font-size: 20px;
+	    color: $gray;
+	    border: none;
+	    width: 100%;    
+		    &::placeholder {
+		        font-style: italic;
+		      	color: lighten($gray, 20%);
+		      }
 	}
 	&__photo {
 		height: 100%;
@@ -96,10 +90,9 @@ export default {
 		padding: 15px 30px;
 		outline: none;
 		border: none;
-		&:hover {
-			background-color: lighten($bright-green, 10%);
+			&:hover {
+				background-color: lighten($bright-green, 10%);
 		}
     }
 }
-
 </style>

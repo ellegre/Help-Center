@@ -17,58 +17,53 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String
-  }
+
 };
 </script>
 
-
 <style scoped lang="scss">
-  .header {
+.header {
     position: sticky;
     top: 0;
     z-index: 100;
     background-color: $base-green;
     color: $white;
     &__container {
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
     }
-  }
+}
 
-  .logo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    &__link {
-      margin-right: 10px;
-    }
-  }
-
-  .auth {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    &__button {
-      font-size: 12px;
-      text-transform: uppercase;
-      color: $white;
-      background-color: transparent;
-      border: none;
-      padding: 18px 20px;
-      letter-spacing: 2px;
-      font-family: "Biotif", Arial, Helvetica, sans-serif;
-      font-weight: lighter;
-      box-sizing: border-box;
-      cursor: pointer;
-      &:hover {
-        color: $bright-green;
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+      &__link {
+        margin-right: 10px;
       }
+}
 
-    }
+.auth {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  &__button {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $white;
+    background-color: transparent;
+    border: none;
+    padding: 18px 20px;
+    letter-spacing: 2px;
+    font-family: "Biotif", Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    box-sizing: border-box;
+    cursor: pointer;
+        &:hover,
+        &:focus {
+          color: $bright-green;
+        }
   }
+}
 </style>

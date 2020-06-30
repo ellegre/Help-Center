@@ -25,13 +25,9 @@
 
 <script>
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String
-  }
+
 };
 </script>
-
 
 <style scoped lang="scss">
 .navigation {
@@ -54,17 +50,14 @@ export default {
       width: 100%;
       color: $bright-green;
       transition: color .5s ease-out;
-      &:hover,
-      &:focus {
-        color: $gray;
-      }
+          &:hover,
+          &:focus {
+            color: $gray;
+          }
     }
     svg path {
-      fill: currentColor;
+        fill: currentColor;
     }
-
   }
 }
 </style>
-
-
