@@ -39,7 +39,8 @@ export default {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    padding-top: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
     li {
       text-align: center;
     }

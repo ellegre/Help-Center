@@ -1,13 +1,7 @@
 <template>
   <div class="main">
   	<section class="search">
-  		<div class="search__photo-container">
-  			<picture>
-				<source type="image/webp" srcset="https://theme.zdassets.com/theme_assets/1281227/1acf4401488b82cc09247f5584a4b1d27348be7a.jpg">
-				<img src="https://theme.zdassets.com/theme_assets/1281227/1acf4401488b82cc09247f5584a4b1d27348be7a.jpg" class="search__photo">
-  		</picture>
-  		</div>
-  		<div class="search__content">
+  		<div class="search__content container">
   			<h1 class="search__title">How can we help?</h1>
   			<form action="" method="get" class="search__form">
 			    <input name="search" placeholder="Search..." type="search" class="search__input">
@@ -42,16 +36,21 @@ export default {
 .search {
 	display: flex;
 	flex-direction: column;
-    width: 100%;    
 	align-items: center;
+	padding-top: 130px;
+	padding-bottom: 130px;
 	background-color: $gray;
-	position: relative;
+	background-image: url('../assets/img/plant.jpg');
+	background-size: cover;
+	background-position: 0px 50%;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    
+	filter: brightness(0.8);
 	&__photo-container {
 		width: 100%;
 		height: 400px;
 	}
 	&__content {
-		position: absolute;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -64,8 +63,7 @@ export default {
 	}
 	&__form {
 		display: flex;
-		width: 550px;
-		border: 1px solid $gray;
+		width: 50%;
 	}
 	&__input {
 	  padding: 10px 30px;
@@ -90,7 +88,7 @@ export default {
 		font-family: biotifbook, Biotif, sans-serif;
 		font-size: 18px;
 		white-space: nowrap;
-		background-color: $mint-green;
+		background-color: $bright-green;
 		text-shadow: 1px 0 1px #000; 
 		color: $white;
         font-weight: bold;
@@ -98,9 +96,8 @@ export default {
 		padding: 15px 30px;
 		outline: none;
 		border: none;
-		border-left: 0.5px solid $gray;
 		&:hover {
-			background-color: lighten($mint-green, 10%);
+			background-color: lighten($bright-green, 10%);
 		}
     }
 }

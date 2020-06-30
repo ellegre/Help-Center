@@ -18,7 +18,6 @@
 </template>
 
 <script>
-
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
 
@@ -84,7 +83,7 @@ export default {
 		z-index: 99; 
 		border: none; 
 		outline: none; 
-		background-color: $mint-green;
+		background-color: $bright-green;
 		background-image: url('../assets/img/arrowUp.svg');
 		background-repeat: no-repeat;
 		background-position: center;
@@ -94,7 +93,7 @@ export default {
 		font-size: 18px; 
 		   &:hover,
 		   &:focus {
-		  	  background-color: lighten($mint-green, 10%);
+		  	  background-color: lighten($bright-green, 10%);
 		  }
 	}
 }

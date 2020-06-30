@@ -1,52 +1,40 @@
 <template>
-	<div>
-	  	<div class="content container">
-	  		<section class="articles">
-	  			<div class="list-wrapper">
-					<ul class="list">
-						<li class="list__item" v-for="item in reversedData" :key="item.id">
-						  <article class="list__article">
-						    <a>
-						      <picture>
-						        <source media="(min-width: 960px)" srcset="">
-						      </picture>
-						    </a>
-						    <div class="list__content-wrapper">
-						      <p>{{item.title}}</p>
-						      <p>{{}}</p>
-						      <p>{{}}</p>
-						      <div class="user-list__like-wrapper">
-						        <button class="list__button">read</button>
-						      </div>
-						    </div>
-						  </article>
-						</li>						
-				    </ul>
-				</div>
-	  		</section>
-	  		<ul class="content__list">
+  	<div class="content">
+  		<section class="info">
+	  		<ul class="info__list container">
 	  			<li>
-	  				<a class="content__link content__link--start">
-	  				  <h3 class="content__title">Getting started</h3>
+	  				<a href="#" class="info__link">
+	  				  <h3 class="info__title">Getting started</h3>
 	  				</a>
 	  			</li>
 	  			<li>
-	  				<a class="content__link">
-	  				  <h3>Purchasing Questions</h3>
+	  				<a href="#" class="info__link">
+	  				  <h3 class="info__title">Purchasing Questions</h3>
 	  				</a>
 	  			</li>
 	  			<li>
-	  				<a class="content__link">
-	  				  <h3>Usage Guides</h3>
+	  				<a href="#" class="info__link">
+	  				  <h3 class="info__title">Usage Guides</h3>
 	  				</a>
 	  			</li>
 	  			<li>
-	  				<a class="content__link">
-	  				  <h3>Troubleshooting</h3>
+	  				<a href="#" class="info__link">
+	  				  <h3 class="info__title">Troubleshooting</h3>
 	  				</a>
 	  			</li>
 	  		</ul>
-	  	</div>
+  	    </section>
+  	    <section class="articles container">
+  			<h2>Promoted articles</h2>
+			<ul class="articles__list">
+				<li class="articles__list-item" v-for="item in reversedData" :key="item.id">
+				  <article class="articles__article">
+				    <img src="../assets/img/sunset.jpg" width="200" height="auto">
+				     <a href="#" class="articles__title">{{toUpperCaseFirstLetter(item.title)}}<span>{{getRandomInt(0, 300)}}</span></a>
+				  </article>
+				</li>					
+		    </ul>
+  		</section>
 	  	<section class="submit">
 	  		<h2>Can't find what you're looking for?</h2>
 	  		<p>Let us help you!</p>
@@ -62,51 +50,84 @@ export default {
   	return {
   		data: [],
   		loading: true,
-        errored: false
+        errored: false,
+        comments: null
   	};
   },
   computed: {
     reversedData: function() {
     	return this.data.slice(0, 10).reverse();
     }
+    
   },
   methods: {
   	getData() {
   		this.$http.get('https://jsonplaceholder.typicode.com/posts/')
-  		.then(response => (this.data = response.data));
-  	}
+  		.then(response => {this.data = response.data})
+  		.catch(error => {
+        console.log(error);
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
+  	},
+  	toUpperCaseFirstLetter(str) {
+        if (!str) return str;
+        return str[0].toUpperCase() + str.slice(1);
+    },
+
+    getRandomInt: function(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+    }
   },
   mounted() {
-    this.getData()
+    this.getData();
   }
 };
 </script>
 
 <style scoped lang="scss">
-.content {
-	padding-top: 60px;
-	margin: 30px;
+
+
+.info {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: lighten($gray, 60%);
 	&__list {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
-		width: 100%;
+		justify-content: space-around;
 		align-items: center;
+		text-align: center;
+
+		li {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 154px;
+			height: 154px;
+      background-color: $bright-green;
+      border-radius: 50%;
+      box-shadow: 0px 1px 1px rgba(8, 32, 60, 0.15), 0px 1px 4px rgba(7, 52, 119, 0.14);
+      &:hover,
+		&:focus {
+			box-shadow: 0px 16px 32px rgba(55, 71, 79, 0.08), 0px 8px 24px rgba(55, 71, 79, 0.1);
+		}
+	}
 
 	}
 	&__link {
 		display: block;
 		padding: 20px 40px;
-		border-radius: 8px;
-		box-shadow: 0px 1px 1px rgba(8, 32, 60, 0.15), 0px 1px 4px rgba(7, 52, 119, 0.14);
-		&:hover,
-		&:focus {
-			box-shadow: 0px 16px 32px rgba(55, 71, 79, 0.08), 0px 8px 24px rgba(55, 71, 79, 0.1);
-		}
+
+		
 	}
 	&__title {
         position: relative;
-        color: $bright-green;
+        color: $white;
+        font-size: 18px;
+
         /*&::after {
 			content: ""; 
             background: url('../assets/img/arrow.png') no-repeat center center;
@@ -119,9 +140,66 @@ export default {
 		    right: -34px;
 		    top: -38px;
 		}*/
-	
+
 	}
 }
+
+.articles {
+	&__article {
+		padding-bottom: 50px;
+
+	}
+	&__list {
+		display: grid;
+		grid-gap: 40px 40px;
+        grid-template-columns: 33.33% 33.33% 33.33%;
+
+	}
+	&__list-item {
+		padding-top: 15px;
+		padding-right: 30px;
+		border-top: 1px solid lighten($gray, 30%);
+		font-size: 16px;
+		text-align: left;
+		&:first-child {
+            grid-row-start: 1;
+            grid-row-end: 4;
+			border-top: none;
+			padding-top: 0;
+		}
+
+		span {
+		  margin-left: 10px;
+          color: $orange;
+		}
+    }
+
+    &__list-item img {
+        display: none;
+        width: 100%;
+        height: auto;
+	}
+
+	&__list-item:first-child img {
+		margin-bottom: 15px;
+        display: block;
+    }
+    
+    h2 {
+    	font-weight: lighter;
+    	font-size: 18px;
+    }
+
+    a {
+    	margin-top: 15px;
+    	color: $gray;
+    	&:hover,
+    	&:focus {
+    	  color: darken($gray, 20%);
+    	  }
+    }
+}
+
 
 .submit {
 	display: flex;
